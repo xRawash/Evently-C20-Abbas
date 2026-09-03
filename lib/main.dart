@@ -1,3 +1,8 @@
+import 'package:evently_app_abbas/config/theme/theme_manager.dart';
+import 'package:evently_app_abbas/core/sources/routes_manager.dart';
+import 'package:evently_app_abbas/features/auth/login/login_screen.dart';
+import 'package:evently_app_abbas/features/auth/register/register_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,6 +14,14 @@ class Evently extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      initialRoute: RoutesManager.login ,
+      onGenerateRoute: RoutesManager.getRoute,
+      theme: ThemeManager.light,
+      darkTheme: ThemeManager.dark,
+      themeMode: ThemeMode.light,
+      locale: Locale('en'),
+    );
   }
 }
