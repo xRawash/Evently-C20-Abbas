@@ -1,3 +1,5 @@
+import 'package:evently_app_abbas/core/sources/colors_manager.dart';
+import 'package:evently_app_abbas/core/sources/routes_manager.dart';
 import 'package:evently_app_abbas/features/main_layout/tabs/fav/fav.dart';
 import 'package:evently_app_abbas/features/main_layout/tabs/home/home.dart';
 import 'package:evently_app_abbas/features/main_layout/tabs/profile/profile.dart';
@@ -20,7 +22,14 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
       body: tabs[tappedIndex],
+      floatingActionButton: FloatingActionButton(
+
+        onPressed: (){
+          Navigator.pushNamed(context, RoutesManager.createEvent);
+        }, child: Icon(Icons.add),),
       bottomNavigationBar: _buildBottomNavBar,
     );
   }
@@ -31,7 +40,7 @@ class _MainLayoutScreenState extends State<MainLayoutScreen> {
     });
   }
 
-  BottomNavigationBar get _buildBottomNavBar{
+  Widget get _buildBottomNavBar{
     return BottomNavigationBar(
 
         currentIndex: tappedIndex,

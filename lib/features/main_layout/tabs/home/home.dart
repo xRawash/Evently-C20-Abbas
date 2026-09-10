@@ -1,3 +1,4 @@
+import 'package:evently_app_abbas/core/sources/assets_manager.dart';
 import 'package:evently_app_abbas/core/sources/colors_manager.dart';
 import 'package:evently_app_abbas/core/widgets/custom_tab_bar.dart';
 import 'package:evently_app_abbas/core/widgets/event_item.dart';
@@ -58,7 +59,9 @@ class _HomeState extends State<Home> {
                 ],
               ),
               CustomTabBar(
-                categories: CategoryModel.categories,
+                categories:   [CategoryModel(id: "1", name: "All", icon: Icons.all_inclusive, image: ImageAssets.meeting),...CategoryModel.categories, ],
+
+
                 selectedBgColor: ColorsManager.darkBlue,
                 selectedFgColor: ColorsManager.white,
                 unSelectedBgColor: ColorsManager.white,

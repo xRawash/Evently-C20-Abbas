@@ -3,16 +3,26 @@ import 'package:flutter/material.dart';
 
 class ThemeManager {
   static final ThemeData light = ThemeData(
+appBarTheme: AppBarTheme(
+  foregroundColor: ColorsManager.black,
+  backgroundColor: ColorsManager.whiteF4,
+  centerTitle: true,
+  titleTextStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.w500,color: ColorsManager.black)
+),
     scaffoldBackgroundColor: ColorsManager.whiteF4,
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: ColorsManager.white,
-      type: BottomNavigationBarType.fixed,
+    type: BottomNavigationBarType.fixed,
       selectedItemColor: ColorsManager.blue,
       unselectedItemColor: ColorsManager.darkGrey,
       // showSelectedLabels: true,
       // showUnselectedLabels: true,
     ),
-
+floatingActionButtonTheme: FloatingActionButtonThemeData(
+  backgroundColor: ColorsManager.darkBlue,
+  foregroundColor: ColorsManager.white,
+  shape: StadiumBorder(),
+),
     cardTheme: CardThemeData(
       color: ColorsManager.whiteF4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -54,6 +64,8 @@ class ThemeManager {
         ),
       ),
     ),
+    iconTheme: IconThemeData(color: ColorsManager.darkBlue),
+
     textTheme: TextTheme(
       headlineLarge: TextStyle(
         fontSize: 24,
@@ -96,6 +108,7 @@ class ThemeManager {
         color: ColorsManager.darkGrey,
       ),
       labelMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+      displaySmall: TextStyle(color: ColorsManager.black, fontSize:16, fontWeight: FontWeight.w500 )
     ),
   );
 

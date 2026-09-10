@@ -33,7 +33,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
         indicatorColor: Colors.transparent,
         dividerColor: Colors.transparent,
         isScrollable: true,
-        tabs: CategoryModel.categories
+        tabs: widget.categories
             .map(
               (category) => CustomTabItem(
             category: category,
@@ -41,7 +41,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
             selectedFgColor: widget.selectedFgColor,
             unSelectedBgColor: widget.unSelectedBgColor,
             unSelectedFgColor:widget.unSelectedFgColor,
-            isSelected: CategoryModel.categories.indexOf(category) == selectedIndex,
+            isSelected: widget.categories.indexOf(category) == selectedIndex,
           ),
         )
             .toList(),
