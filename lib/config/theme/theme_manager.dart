@@ -64,6 +64,7 @@ floatingActionButtonTheme: FloatingActionButtonThemeData(
         ),
       ),
     ),
+
     iconTheme: IconThemeData(color: ColorsManager.darkBlue),
 
     textTheme: TextTheme(

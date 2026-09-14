@@ -1,3 +1,4 @@
+import 'package:evently_app_abbas/core/extensions/date_time_ex.dart';
 import 'package:evently_app_abbas/core/sources/assets_manager.dart';
 import 'package:evently_app_abbas/core/sources/colors_manager.dart';
 import 'package:evently_app_abbas/core/widgets/custom_elevted_button.dart';
@@ -7,8 +8,18 @@ import 'package:evently_app_abbas/core/widgets/cutom_text_button.dart';
 import 'package:evently_app_abbas/models/category_model.dart';
 import 'package:flutter/material.dart';
 
-class CreateEventScreen extends StatelessWidget {
+class CreateEventScreen extends StatefulWidget {
   const CreateEventScreen({super.key});
+
+  @override
+  State<CreateEventScreen> createState() => _CreateEventScreenState();
+}
+
+class _CreateEventScreenState extends State<CreateEventScreen> {
+  DateTime currentDateTime = DateTime.now(); /// 14-9-2026 - 6:012
+
+  /// 14-9-2026 , 6:01:00:000
+  TimeOfDay currentTime = TimeOfDay.now();
 
   @override
   Widget build(BuildContext context) {
@@ -39,42 +50,77 @@ class CreateEventScreen extends StatelessWidget {
               unSelectedFgColor: ColorsManager.black,
             ),
             SizedBox(height: 16),
-            Text("Title", style: Theme.of(context).textTheme.displaySmall,),
+            Text("Title", style: Theme.of(context).textTheme.displaySmall),
             SizedBox(height: 8),
             CustomTextFormField(hintText: "Event Title"),
             SizedBox(height: 16),
-            Text("Description", style: Theme.of(context).textTheme.displaySmall,),
+            Text(
+              "Description",
+              style: Theme.of(context).textTheme.displaySmall,
+            ),
             SizedBox(height: 8),
-            CustomTextFormField(hintText: "Event Description...", lines: 4,),
-            SizedBox(height: 16,),
+            CustomTextFormField(hintText: "Event Description...", lines: 4),
+            SizedBox(height: 16),
             Row(
               children: [
-Icon(Icons.date_range_outlined, ),
-                SizedBox(width: 8,),
-                Text("Event Date", style: Theme.of(context).textTheme.displaySmall,),
+                Icon(Icons.date_range_outlined),
+                SizedBox(width: 8),
+                Text(
+                  currentDateTime.toFormattedDate,
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
                 Spacer(),
-                CustomTextButton(text: "Choose Date", onTap: (){})
+                CustomTextButton(text: "Choose Date", onTap: _chooseEventDate),
               ],
             ),
-            SizedBox(height: 16,),
+            SizedBox(height: 16),
             Row(
               children: [
-                Icon(Icons.date_range_outlined, ),
-                SizedBox(width: 8,),
-                Text("Event Time", style: Theme.of(context).textTheme.displaySmall,),
+                Icon(Icons.date_range_outlined),
+                SizedBox(width: 8),
+                Text(
+                  currentDateTime.toFormattedTime,
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
                 Spacer(),
-                CustomTextButton(text: "Choose Time", onTap: (){})
-
-
+                CustomTextButton(text: "Choose Time", onTap: _chooseEventTime),
               ],
             ),
 
-    Spacer(),
-    CustomElevatedButton(title: "Add Event", onPress: (){})
-
-    ],
+            Spacer(),
+            CustomElevatedButton(title: "Add Event", onPress: () {}),
+          ],
         ),
       ),
     );
+  }
+
+  void _chooseEventDate() async {
+    currentDateTime =
+        await showDatePicker(
+          context: context,
+          firstDate: DateTime.now(),
+          lastDate: DateTime.now().add(Duration(days: 365)),
+          initialDate: DateTime.now(),
+        ) ??
+        currentDateTime;
+
+    currentDateTime = currentDateTime.copyWith(
+      hour: currentTime.hour,
+      minute: currentTime.minute,
+    );
+    setState(() {});
+  }
+
+  void _chooseEventTime() async {
+    currentTime =
+        await showTimePicker(context: context, initialTime: TimeOfDay.now()) ??
+        currentTime;
+
+    currentDateTime = currentDateTime.copyWith(
+      hour: currentTime.hour,
+      minute: currentTime.minute,
+    );
+    setState(() {});
   }
 }
