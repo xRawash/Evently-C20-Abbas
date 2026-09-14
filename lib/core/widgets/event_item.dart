@@ -30,9 +30,7 @@ EventModel event;
             Card(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: Text(event.date.showMonthWeekDay, style: TextStyle(fontSize: 16,
-                    fontWeight: FontWeight.w500,
-                    color: ColorsManager.darkBlue),),
+                child: Text(event.date.showMonthWeekDay, style:Theme.of(context).textTheme.headlineSmall),
               ),
             ),
             Spacer(),
@@ -45,8 +43,7 @@ EventModel event;
                     Expanded(
                       child: Text(event.title, style: Theme
                           .of(context)
-                          .textTheme
-                          .headlineSmall,),
+                          .textTheme.headlineSmall),
                     ),
                     Icon(Icons.favorite_border),
 

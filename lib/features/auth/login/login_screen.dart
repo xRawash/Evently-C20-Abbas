@@ -1,3 +1,4 @@
+import 'package:evently_app_abbas/core/sources/colors_manager.dart';
 import 'package:evently_app_abbas/core/sources/routes_manager.dart';
 import 'package:evently_app_abbas/core/sources/validator.dart';
 import 'package:evently_app_abbas/core/widgets/custom_elevted_button.dart';
@@ -43,7 +44,7 @@ class _LoginScreenState extends State<LoginScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset(ImageAssets.eventlyLogo),
+                Image.asset(ImageAssets.eventlyLogo, color: Theme.of(context).primaryColor),
                 Text(
                   "Login to your account",
                   style: Theme.of(context).textTheme.headlineLarge,

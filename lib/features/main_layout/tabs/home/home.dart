@@ -41,6 +41,7 @@ class _HomeState extends State<Home> {
                   ),
                   Spacer(),
                   Icon(Icons.light_mode_rounded),
+                  SizedBox(width: 8,),
                   Card(
                     child: Padding(
                       padding: const EdgeInsets.symmetric(
@@ -49,15 +50,13 @@ class _HomeState extends State<Home> {
                       ),
                       child: Text(
                         "En",
-                        style: Theme.of(context).textTheme.titleSmall!.copyWith(
-                          color: ColorsManager.whiteF4,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: Theme.of(context).textTheme.bodyLarge
                       ),
                     ),
                   ),
                 ],
               ),
+              SizedBox(height: 12,),
               CustomTabBar(
                 categories:   [CategoryModel(id: "1", name: "All", icon: Icons.all_inclusive, image: ImageAssets.meeting),...CategoryModel.categories, ],
 

@@ -11,6 +11,6 @@ class CustomTextButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap:onTap ,
-        child: Text(text, textAlign: textAlign,style: TextStyle(decoration: TextDecoration.underline,fontSize: 14, fontWeight: FontWeight.w500, color: ColorsManager.darkBlue),));
+        child: Text(text, textAlign: textAlign,style: Theme.of(context).textTheme.bodyMedium,));
   }
 }

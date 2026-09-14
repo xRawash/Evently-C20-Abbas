@@ -53,7 +53,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                Image.asset(ImageAssets.eventlyLogo),
+                Image.asset(ImageAssets.eventlyLogo, color: Theme.of(context).primaryColor,),
                 Text(
                   "Create your account",
                   style: Theme.of(context).textTheme.headlineLarge,
